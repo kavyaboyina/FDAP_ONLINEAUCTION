@@ -1,0 +1,44 @@
+package com.biddingsystem.entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.Data;
+
+@Data
+@Entity
+public class Product {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "category_id")
+	private Category category;
+
+	@ManyToOne
+	@JoinColumn(name = "seller_user_id")
+	private User seller;
+	
+	@ManyToOne
+	@JoinColumn(name = "buyer_user_id")
+	private User buyer;
+
+	public void setStatus(String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getName(String name) {
+		return name;
+	}
+
+	public void setName(String name) {
+	}
+
+}
